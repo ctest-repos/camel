@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.function.Predicate;
 
+import edu.illinois.ConfigTracker;
 import org.apache.camel.spi.LoadablePropertiesSource;
 import org.apache.camel.support.ResourceHelper;
 import org.apache.camel.support.service.ServiceSupport;
@@ -85,6 +86,7 @@ public abstract class AbstractLocationPropertiesSource extends ServiceSupport
 
     @Override
     public String getProperty(String name) {
+        ConfigTracker.markParamAsUsed(name);
         return properties.getProperty(name);
     }
 
@@ -95,6 +97,7 @@ public abstract class AbstractLocationPropertiesSource extends ServiceSupport
      * @param value the value
      */
     public void setProperty(String key, String value) {
+        ConfigTracker.markParamAsSet(key);
         properties.setProperty(key, value);
     }
 

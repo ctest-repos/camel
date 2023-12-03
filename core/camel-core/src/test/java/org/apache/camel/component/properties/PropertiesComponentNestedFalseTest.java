@@ -16,11 +16,16 @@
  */
 package org.apache.camel.component.properties;
 
+import edu.illinois.CTestClass;
+import edu.illinois.CTestJunit5Extension;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ContextTestSupport;
 import org.apache.camel.builder.RouteBuilder;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
+@ExtendWith(CTestJunit5Extension.class)
+@CTestClass
 public class PropertiesComponentNestedFalseTest extends ContextTestSupport {
 
     @Test
