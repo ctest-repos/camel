@@ -86,18 +86,23 @@ public abstract class AbstractLocationPropertiesSource extends ServiceSupport
 
     @Override
     public String getProperty(String name) {
-        ConfigTracker.markParamAsUsed(name);
-        return properties.getProperty(name);
+        /*ConfigTracker.injectConfig(this.hashCode(), this::setProperty);
+        ConfigTracker.markParamAsUsed(name);*/
+        ConfigTracker.markParamAsUsed(this.hashCode(), this::setProperty, name);
+        String result = properties.getProperty(name);
+        System.out.println("getProperty: " + name + " = " + result);
+        return result;
     }
 
     /**
      * Sets a property
      *
-     * @param key   the key
+     * @param key   the keyl
      * @param value the value
      */
     public void setProperty(String key, String value) {
         ConfigTracker.markParamAsSet(key);
+        System.out.println("setProperty: " + key + " = " + value);
         properties.setProperty(key, value);
     }
 
