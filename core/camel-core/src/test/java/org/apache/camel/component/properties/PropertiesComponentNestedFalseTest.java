@@ -24,8 +24,6 @@ import org.apache.camel.builder.RouteBuilder;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(CTestJunit5Extension.class)
-@CTestClass
 public class PropertiesComponentNestedFalseTest extends ContextTestSupport {
 
     @Test
